@@ -103,7 +103,7 @@ export default function Header(props) {
 
             <>
               <Box sx={{ flexGrow: 0 }}>
-                < >Bạn có phải là Admin?</>
+                <>Bạn có phải là Admin?</>
               </Box>
 
               {/* Signin */}

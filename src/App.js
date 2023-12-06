@@ -1,12 +1,10 @@
 import "./App.css";
-import Carousel from "./Carousel/Carousel";
-import Header from "./Header/Header";
+import Home from "./Home/Home.jsx";
 
 function App() {
   return (
     <div>
-      <Carousel />
-      {/* <Header /> */}
+      <Home />
     </div>
   );
 }
