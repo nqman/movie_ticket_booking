@@ -1,7 +1,14 @@
 import "./App.css";
+import Carousel from "./Carousel/Carousel";
+import Header from "./Header/Header";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <Carousel />
+      {/* <Header /> */}
+    </div>
+  );
 }
 
 export default App;
