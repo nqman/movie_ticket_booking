@@ -63,7 +63,7 @@ export default function Header(props) {
             <LiveTvIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} color="error" />
             <Typography
               variant="h5"
-              noWrap
+              // noWrap
               component="a"
               href="/"
               sx={{
@@ -103,7 +103,7 @@ export default function Header(props) {
 
             <>
               <Box sx={{ flexGrow: 0 }}>
-                <SpanHeader>Bạn có phải là Admin?</SpanHeader>
+                < >Bạn có phải là Admin?</>
               </Box>
 
               {/* Signin */}

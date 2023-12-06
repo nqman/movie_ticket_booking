@@ -1,10 +1,12 @@
 import "./App.css";
+import Carousel from "./Carousel/Carousel";
 import Header from "./Header/Header";
 
 function App() {
   return (
     <div>
-      <Header />
+      <Carousel />
+      {/* <Header /> */}
     </div>
   );
 }
