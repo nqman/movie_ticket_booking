@@ -1,16 +1,10 @@
 import "./App.css";
-import Application from "./Application/Application";
-import Footer from "./Footer/Footer.jsx";
-import Carousel from "./Carousel/Carousel";
-import Header from "./Header/Header";
+import Home from "./Home/Home.jsx";
 
 function App() {
   return (
     <div>
-      <Application />
-      <Footer />
-      <Carousel />
-      {/* <Header /> */}
+      <Home />
     </div>
   );
 }
