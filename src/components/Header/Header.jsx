@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { AccountCircle } from "@mui/icons-material";
 import { SigninAndSignup, SpanHeader } from "./stylesHeader";
+
 export default function Header(props) {
   const pages = [
     { id: "showing", label: "Lịch chiếu" },

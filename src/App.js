@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./Home/Home.jsx";
+import Home from "./modules/Home/pages/Home.jsx";
 
 function App() {
   return (
