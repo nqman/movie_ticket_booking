@@ -1,0 +1,48 @@
+.form {
+  .form_background {
+    background-image: url("https://movie-booking-project.vercel.app/img/bgAuth.jpg");
+  }
+  form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form_container {
+      color: white;
+      background-image: linear-gradient(to bottom, rgba(20, 50, 93, 0.9), rgba(8, 22, 48, 0.9));
+      width: 40%;
+      padding: 30px;
+      border-radius: 30px;
+
+      @media screen and (max-width: 768px) {
+        width: 100%; // Đặt width là 100% khi màn hình nhỏ hơn hoặc bằng 768px
+      }
+      .form_input {
+        // padding: 20px;
+        height: 90px;
+        input {
+          margin-top: 3px;
+          &.input_taiKhoan {
+            width: 100%;
+          }
+          &.input_matKhau {
+            width: 100%;
+          }
+          &.input_email {
+            width: 100%;
+          }
+          &.input_hoTen {
+            width: 100%;
+          }
+          &.input_sdt {
+            width: 100%;
+          }
+        }
+        p {
+          margin-top: 2px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

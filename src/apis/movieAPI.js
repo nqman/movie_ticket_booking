@@ -11,7 +11,12 @@ export async function getBannerAPI() {
 
 export async function getMoviesAPI() {
   try {
-    const resp = await baseAPI.get("/QuanLyPhim/LayDanhSachPhim");
+    const resp = await baseAPI.get("/QuanLyPhim/LayDanhSachPhim", {
+      params: {
+        maNhom: "GP01",
+      },
+    });
+
     return resp.data.content;
   } catch (error) {
     throw error.response?.data?.content;
