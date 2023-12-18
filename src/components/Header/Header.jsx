@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import {
   AppBar,
   Box,
@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { AccountCircle } from "@mui/icons-material";
 import { SigninAndSignup, SpanHeader } from "./stylesHeader";
+import { useNavigate } from "react-router-dom";
 
 export default function Header(props) {
   const pages = [
@@ -23,6 +24,8 @@ export default function Header(props) {
     { id: "tintuc", label: "Tin tức" },
     { id: "ungdung", label: "Ứng dụng" },
   ];
+  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
     <>
@@ -104,12 +107,24 @@ export default function Header(props) {
 
             <>
               <Box sx={{ flexGrow: 0 }}>
-                <>Bạn có phải là Admin?</>
+                <IconButton
+                  sx={{
+                    "&:hover": {
+                      color: "rgb(211, 47, 47) ",
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                >
+                  <Typography onClick={() => navigate(`/admin`)}>Bạn có phải là Admin?</Typography>
+                </IconButton>
               </Box>
 
               {/* Signin */}
               <Box sx={{ flexGrow: 0 }}>
-                <SigninAndSignup borderRight="1px solid #9e9e9e">
+                <SigninAndSignup
+                  onClick={() => navigate(`/sign-in`)}
+                  borderRight="1px solid #9e9e9e"
+                >
                   <Tooltip title="Đăng nhập">
                     <AccountCircle fontSize="large" />
                   </Tooltip>
@@ -119,7 +134,7 @@ export default function Header(props) {
 
               {/* Signup */}
               <Box sx={{ flexGrow: 0 }}>
-                <SigninAndSignup>
+                <SigninAndSignup onClick={() => navigate(`/sign-up`)}>
                   <Tooltip title="Đăng kí">
                     <AccountCircle fontSize="large" />
                   </Tooltip>

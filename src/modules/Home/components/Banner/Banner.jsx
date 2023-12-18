@@ -45,7 +45,7 @@ export default function Banner() {
           <div key={banner.maBanner}>
             <Card component="li" sx={{ minWidth: 300, flexGrow: 1, overflow: "hidden" }}>
               <CardCover>
-                <img width={100} src={banner.hinhAnh} alt="" />
+                <img style={{ width: "2000" }} src={banner.hinhAnh} alt="" />
               </CardCover>
               <CardContent>
                 <Typography
