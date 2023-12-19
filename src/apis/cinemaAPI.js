@@ -12,3 +12,11 @@ export async function getMovieDetailsAPI(movieId) {
     throw error.response?.data?.content;
   }
 }
+export async function getLogoCinemaAPI() {
+  try {
+    const resp = await baseAPI.get("quanlyrap/LayThongTinHeThongRap");
+    return resp.data.content;
+  } catch (error) {
+    throw error.response?.data?.content;
+  }
+}
