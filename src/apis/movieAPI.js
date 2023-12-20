@@ -22,3 +22,19 @@ export async function getMoviesAPI() {
     throw error.response?.data?.content;
   }
 }
+export async function createMovieAPI(movie) {
+  try {
+    const formData = new FormData();
+    for (let key in movie) {
+      formData.append(key, movie[key]);
+    }
+    formData.append("maNhom", "GP01");
+    const resp = await baseAPI.post("/quanlyphim/themphimuploadhinh", formData);
+    return resp.data.content;
+  } catch (error) {
+    if (error.response) {
+      throw error.response.data?.content;
+    }
+    throw error.message;
+  }
+}
