@@ -6,12 +6,16 @@ import Signup from "./modules/auth/page/Signup.jsx";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
 import MainLayout from "./components/MainLayout/MainLayout.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
+import AdminRoute from "./routers/AdminRoute.jsx";
+import CreateMovie from "./modules/movieManagement/pages/CreateMovie.jsx";
+import AdminLayout from "./components/AdminLayout.jsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          {/* Phàn người dùng */}
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="/details/:movieId" element={<Detail />} />
@@ -23,12 +27,23 @@ function App() {
                 </PrivateRoute>
               }
             />
+            {/* TRANG ĐĂNG KÝ */}
+            <Route path="/sign-up" element={<Signup />} />
+            {/* TRANG ĐĂNG NHẬP */}
+            <Route path="/sign-in" element={<Signin />} />
           </Route>
-          {/* TRANG ĐĂNG KÝ */}
-          <Route path="/sign-up" element={<Signup />} />
-          {/* TRANG ĐĂNG NHẬP */}
-          <Route path="/sign-in" element={<Signin />} />
-
+          {/* Phàn quản tri */}
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route path="movies/create" element={<CreateMovie />} />
+          </Route>
+          {/* protectedadmin */}
           {/* TRANG NOT FOUND */}
           <Route path="*" element={<NotFound />} />
         </Routes>
