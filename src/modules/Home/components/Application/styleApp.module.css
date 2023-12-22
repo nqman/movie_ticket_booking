@@ -1,0 +1,42 @@
+.app_left {
+    position: relative;
+    top: 25%;
+    left: 15%;
+    color: white;
+    font-size: 16px;
+}
+
+.button_app {
+    border: none;
+    border-radius: 5px;
+    background-color: #FB4126;
+    color: white;
+    padding: 15px 32px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.button_app:hover {
+    background-color: rgb(175, 46, 26);
+}
+
+
+.store {
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+
+}
+
+.app_right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.app_right img:last-child {
+    position: absolute;
+}
