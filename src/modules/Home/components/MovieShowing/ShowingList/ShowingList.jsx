@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { ButtonMovie } from "../../ButtonMovie";
 
 import { Desc, NameMovie } from "./stylesShowList";
+import { getMoviesAPI } from "../../../../../apis/movieAPI";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
@@ -12,8 +14,6 @@ import { Box, Modal } from "@mui/material";
 
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import ReactPlayer from "react-player";
-import { getMoviesAPI } from "../../../../../apis/movieAPI";
-import { ButtonMovie } from "../../ButtonMovie";
 
 const style = {
   position: "absolute",

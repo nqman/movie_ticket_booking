@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { getMovieDetailsAPI } from "../../../../../apis/cinemaAPI";
+import { ButtonMovie } from "../../ButtonMovie";
 
 import { Box, FormControl, InputLabel, MenuItem, Paper, Select } from "@mui/material";
 import dayjs from "dayjs";
-import { getMovieDetailsAPI } from "../../../../../apis/cinemaAPI";
-import { ButtonMovie } from "../../ButtonMovie";
 
 export default function ShowingSelect({ movies }) {
   const [movie, setMovie] = useState("");
@@ -65,7 +65,7 @@ export default function ShowingSelect({ movies }) {
             label="Phim"
           >
             <MenuItem value="">
-              <em>Chọn phim</em>{" "}
+              <em>Chọn phim</em>
             </MenuItem>
             {movies.map((movieItem) => {
               return (
