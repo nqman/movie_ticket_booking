@@ -10,6 +10,7 @@ import AdminRoute from "./routers/AdminRoute.jsx";
 import CreateMovie from "./modules/movieManagement/pages/CreateMovie.jsx";
 import AdminLayout from "./components/AdminLayout.jsx";
 
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
