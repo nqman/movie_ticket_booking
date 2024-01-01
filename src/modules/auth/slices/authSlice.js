@@ -7,7 +7,6 @@ export const signin = createAsyncThunk("auth/signin", async (values) => {
   localStorage.setItem("currentUser", JSON.stringify(data));
   return data;
 });
-
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -15,7 +14,12 @@ const authSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      localStorage.removeItem("currentUser");
+      state.currentUser = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(signin.pending, (state, action) => {
       return { ...state, isLoading: true, error: null };
@@ -30,5 +34,5 @@ const authSlice = createSlice({
     });
   },
 });
-
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;
