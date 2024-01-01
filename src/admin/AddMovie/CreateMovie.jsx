@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import dayjs from "dayjs";
-import { createMovieAPI } from "../../../apis/movieAPI";
+import { createMovieAPI } from "../../apis/movieAPI";
 export default function CreateMovie() {
   const [imgPreview, setImgPreview] = useState("");
   const { register, handleSubmit } = useForm({

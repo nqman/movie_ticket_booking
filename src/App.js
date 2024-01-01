@@ -7,8 +7,8 @@ import PrivateRoute from "./routers/PrivateRoute.jsx";
 import MainLayout from "./components/MainLayout/MainLayout.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import AdminRoute from "./routers/AdminRoute.jsx";
-import CreateMovie from "./modules/movieManagement/pages/CreateMovie.jsx";
-import AdminLayout from "./components/AdminLayout.jsx";
+import CreateMovie from "./admin/AddMovie/CreateMovie.jsx";
+import AdminLayout from "./admin/AdminLayout/AdminLayout.jsx";
 
 // Import Swiper styles
 import "swiper/css";
