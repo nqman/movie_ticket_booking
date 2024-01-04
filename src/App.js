@@ -1,15 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./modules/Home/pages/Home.jsx";
 import Detail from "./modules/detail/pages/Detail.jsx";
-import Signin from "./modules/auth/page/Signin.jsx";
-import Signup from "./modules/auth/page/Signup.jsx";
+import Signup from "./modules/auth/page/Signup/Signup.jsx";
+import Signin from "./modules/auth/page/Signin/Signin";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
 import MainLayout from "./components/MainLayout/MainLayout.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import AdminRoute from "./routers/AdminRoute.jsx";
 import CreateMovie from "./admin/AddMovie/CreateMovie.jsx";
 import AdminLayout from "./admin/AdminLayout/AdminLayout.jsx";
-
+import Home from "./modules/Home/pages/Home.jsx";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
@@ -32,11 +31,11 @@ function App() {
                 </PrivateRoute>
               }
             />
-            {/* TRANG ĐĂNG KÝ */}
-            <Route path="/sign-up" element={<Signup />} />
-            {/* TRANG ĐĂNG NHẬP */}
-            <Route path="/sign-in" element={<Signin />} />
           </Route>
+          {/* TRANG ĐĂNG KÝ */}
+          <Route path="/sign-up" element={<Signup />} />
+          {/* TRANG ĐĂNG NHẬP */}
+          <Route path="/sign-in" element={<Signin />} />
           {/* Phàn quản tri */}
           <Route
             path="/admin"

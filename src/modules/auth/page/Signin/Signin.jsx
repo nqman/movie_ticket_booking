@@ -1,9 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { signin } from "../slices/authSlice";
+import { signin } from "../../slices/authSlice";
 import { Navigate, useSearchParams } from "react-router-dom";
-import formStyles from "../components/formStyles.module.scss";
+import formStyles from "../../components/formStyles.module.scss";
+import Swal from "sweetalert2";
 export default function Signin() {
   const {
     register,
@@ -25,9 +26,24 @@ export default function Signin() {
   const handleSignin = async (values) => {
     try {
       await dispatch(signin(values)).unwrap();
-      alert("Đăng nhập thành công");
+      // Swal.fire({
+      //   position: "top-end",
+      //   icon: "success",
+      //   title: "Your work has been saved",
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // }).then(() => {
+      //   // Chuyển hướng đến trang chủ
+      //   window.location.href = "/";
+      // });
+      alert("Login success");
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
     }
   };
 

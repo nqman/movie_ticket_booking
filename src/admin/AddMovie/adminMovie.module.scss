@@ -1,0 +1,25 @@
+.movieAdmin {
+  .container {
+    .form {
+      height: 650px;
+      p {
+        color: red;
+      }
+      .input_container {
+        height: 80px;
+        .form_input {
+          width: 400px;
+          padding: 10px;
+          height: 50px;
+        }
+      }
+      .image_input {
+        height: 100%;
+        img {
+          height: 500px;
+          width: 500px;
+        }
+      }
+    }
+  }
+}
