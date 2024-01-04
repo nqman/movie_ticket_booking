@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import dayjs from "dayjs";
 import { createMovieAPI } from "../../apis/movieAPI";
+import adminMovie from "./adminMovie.module.scss";
+import { Grid } from "@mui/material";
 export default function CreateMovie() {
   const [imgPreview, setImgPreview] = useState("");
   const { register, handleSubmit } = useForm({
@@ -35,50 +37,53 @@ export default function CreateMovie() {
       setImgPreview(evt.target.result);
     };
   };
+  // spacing={50}
   return (
-    <div>
-      <h1>CreateMovie</h1>
-      <form onSubmit={handleSubmit(handleCreateMovie)}>
-        <div>
-          <label>Movie's name</label>
-          <input {...register("tenPhim")} />
-        </div>
-        <div>
-          <label> Movies's nickname</label>
-          <input {...register("biDanh")} />
-        </div>
-        <div>
-          <label>Description</label>
-          <textarea {...register("moTa")} />
-        </div>
-        <div>
-          <label>Imgae</label>
-          <input
-            type="file"
-            {...register("hinhAnh", {
-              onChange: handleChangeImage,
-            })}
-          />
-          {imgPreview && <img src={imgPreview} alt="preview" width={200} height={200} />}
-        </div>
-        <div>
-          <label>Trailer</label>
-          <input {...register("trailer")} />
-        </div>
-        <div>
-          <label>Movie opening date</label>
-          <input
-            type="date"
-            {...register("ngayKhoiChieu", {
-              setValueAs: (value) => {
-                console.log(value);
-                return dayjs(value).format("DD/MM/YYYY");
-              },
-            })}
-          />
-        </div>
-        <button className="btn btn-success">Add Movie</button>
-      </form>
-    </div>
+    <Grid container justifyContent="center" alignItems="center" mt={10}>
+      <div>
+        <h1 className="create pb-4">CreateMovie</h1>
+        <form onSubmit={handleSubmit(handleCreateMovie)}>
+          <div>
+            <label>Movie's name</label>
+            <input {...register("tenPhim")} />
+          </div>
+          <div>
+            <label> Movies's nickname</label>
+            <input {...register("biDanh")} />
+          </div>
+          <div>
+            <label>Description</label>
+            <textarea {...register("moTa")} />
+          </div>
+          <div>
+            <label>Imgae</label>
+            <input
+              type="file"
+              {...register("hinhAnh", {
+                onChange: handleChangeImage,
+              })}
+            />
+            {imgPreview && <img src={imgPreview} alt="preview" width={200} height={200} />}
+          </div>
+          <div>
+            <label>Trailer</label>
+            <input {...register("trailer")} />
+          </div>
+          <div>
+            <label>Movie opening date</label>
+            <input
+              type="date"
+              {...register("ngayKhoiChieu", {
+                setValueAs: (value) => {
+                  console.log(value);
+                  return dayjs(value).format("DD/MM/YYYY");
+                },
+              })}
+            />
+          </div>
+          <button className="btn btn-success">Add Movie</button>
+        </form>
+      </div>
+    </Grid>
   );
 }

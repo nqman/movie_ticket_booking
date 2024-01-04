@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { object, string } from "yup";
-import { signupAPI } from "../../../apis/userAPI";
-import formStyles from "../components/formStyles.module.scss";
+import { signupAPI } from "../../../../apis/userAPI";
+import formStyles from "../../components/formStyles.module.scss";
 import { Button } from "@mui/base";
 const validationSchema = object({
   taiKhoan: string().required("Tài khoản không được để trống"),

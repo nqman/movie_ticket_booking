@@ -19,6 +19,10 @@ import { SigninAndSignup, SpanHeader } from "./stylesHeader";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import { logout } from "../../modules/auth/slices/authSlice";
+import Swal from "sweetalert2";
+
+const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 export default function Header(props) {
   const pages = [
     { id: "showing", label: "Lịch chiếu" },
@@ -33,8 +37,34 @@ export default function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleLogout = () => {
-    dispatch(logout());
-    setAnchorEl(null);
+    closePopover();
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "Do you want to logout right now?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: " I need logout",
+        cancelButtonText: " Cancel",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Logout!",
+            text: "Your account has logout.",
+            icon: "success",
+          });
+          dispatch(logout());
+          setAnchorEl(null);
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your account still in login :)",
+            icon: "error",
+          });
+        }
+      });
   };
 
   const handleProfile = () => {
@@ -52,6 +82,14 @@ export default function Header(props) {
 
   const isPopoverOpen = Boolean(anchorEl);
 
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: " me-2 btn btn-success",
+      cancelButton: "me-2 btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
   return (
     <>
       <CssBaseline />
@@ -59,9 +97,9 @@ export default function Header(props) {
       <AppBar color="default">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <LiveTvIcon sx={{ display: { xs: "none", md: "flex" }, mb: 1 }} color="error" />
+            <LiveTvIcon sx={{ display: { xs: "none", md: "flex" }, mb: 1 }} color="#1976D2" />
             <Typography
-              variant="h5"
+              variant="h6"
               noWrap
               component="a"
               href="/"
@@ -71,14 +109,14 @@ export default function Header(props) {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "#d32f2f",
+                color: "#1976D2",
                 textDecoration: "none",
               }}
             >
               Trung & Mẫn MOVIE
             </Typography>
-
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <Box sx={{ flexGrow: 3 }} />
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -101,7 +139,7 @@ export default function Header(props) {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "#d32f2f",
+                color: "#1976D2",
                 textDecoration: "none",
               }}
             >

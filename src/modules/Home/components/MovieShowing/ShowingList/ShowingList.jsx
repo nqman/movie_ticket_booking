@@ -78,7 +78,7 @@ export default function ShowingList() {
               key={item.maPhim}
               className="swiper-slide2"
             >
-              <img src={item.hinhAnh} alt={item.tenPhim} width="300px" height="400px" />
+              <img src={item.hinhAnh} alt={item.tenPhim} width="280px" height="400px" />
               <Box
                 onClick={() => handleOpen(item)}
                 sx={{
@@ -88,7 +88,7 @@ export default function ShowingList() {
                   top: "0",
                   left: "0",
                   width: "100%",
-                  height: "75%",
+                  height: "100%",
                   zIndex: "1201",
                   opacity: "0",
                   borderRadius: "10px",
@@ -124,8 +124,9 @@ export default function ShowingList() {
                     position: "absolute",
                     bottom: "10px",
                     left: "50%",
-                    width: "90%",
+                    width: "95%",
                     transform: "translateX(-50%)",
+                    marginBottom: "-27%",
                   }}
                   onClick={() => navigate(`/movies/${item.maPhim}`)}
                 >

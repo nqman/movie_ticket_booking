@@ -7,6 +7,12 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Box } from "@mui/material";
 
+const trailers = [
+  "https://www.youtube.com/watch?v=cYCOcxWgPVU",
+  "https://www.youtube.com/watch?v=L-XhraxUsAs",
+  "https://www.youtube.com/watch?v=IkaP0KJWTsQ&t=1s",
+];
+
 export default function Banner() {
   const { data: banners = [], isLoading } = useQuery({
     queryKey: ["banner"],
@@ -17,6 +23,11 @@ export default function Banner() {
     return <Loading />;
   }
 
+  const bannersWithTrailers = banners.map((banner, index) => ({
+    ...banner,
+    trailer: trailers[index],
+  }));
+  console.log(banners);
   return (
     <Swiper
       autoplay={{
@@ -34,50 +45,48 @@ export default function Banner() {
       modules={[Navigation, Autoplay]}
       className="mySwiper"
     >
-      {banners.map((banner) => {
-        return (
-          <SwiperSlide key={banner.maBanner}>
-            <img width="100%" height="600px" src={banner.hinhAnh} alt="" />
-            <Box
+      {bannersWithTrailers.map((banner) => (
+        <SwiperSlide key={banner.maBanner}>
+          <img width="100%" height="600px" src={banner.hinhAnh} alt="" />
+          <Box
+            sx={{
+              backgroundColor: "#000000a7",
+              color: "#fff",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+              zIndex: "1201",
+              opacity: "0",
+              borderRadius: "10px",
+              cursor: "pointer",
+
+              transition: "all 0.5s",
+
+              "&:hover": {
+                opacity: 1,
+              },
+            }}
+          >
+            <PlayCircleOutlineIcon
+              fontSize="large"
               sx={{
-                backgroundColor: "#000000a7",
-                color: "#fff",
                 position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                zIndex: "1201",
-                opacity: "0",
-                borderRadius: "10px",
-                cursor: "pointer",
-
+                top: "50%",
+                left: "50%",
+                width: "100px",
+                height: "100px",
+                transform: "translate(-50%, -50%)",
                 transition: "all 0.5s",
-
                 "&:hover": {
-                  opacity: 1,
+                  color: "#ffffff81",
                 },
               }}
-            >
-              <PlayCircleOutlineIcon
-                fontSize="large"
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: "100px",
-                  height: "100px",
-                  transform: "translate(-50%, -50%)",
-                  transition: "all 0.5s",
-                  "&:hover": {
-                    color: "#ffffff81",
-                  },
-                }}
-              />
-            </Box>
-          </SwiperSlide>
-        );
-      })}
+            />
+          </Box>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }
