@@ -1,5 +1,5 @@
 .form {
-  .input_name {
+  .input_account {
     height: 65px;
     label {
       margin-right: 80px;
@@ -8,51 +8,55 @@
       color: red;
     }
   }
-  .input_nickname {
+  .input_password {
     height: 65px;
     label {
-      margin-right: 48px;
+      margin-right: 80px;
     }
     p {
       color: red;
     }
   }
-  .input_description {
+  .input_email {
     height: 65px;
     label {
-      margin-right: 116px;
+      margin-right: 110px;
     }
     p {
       color: red;
     }
   }
-  .input_img {
+  .input_name {
     height: 65px;
     label {
-      margin-right: 91px;
-    }
-    p {
-      color: red;
-    }
-    input {
-      margin-right: 90px;
-      padding-bottom: 95px;
-    }
-  }
-
-  .input_trailer {
-    height: 75px;
-    label {
-      margin-right: 28px;
+      margin-right: 101px;
     }
     p {
       color: red;
     }
   }
-  .input_date {
-    height: 75px;
+  .input_phone {
+    height: 65px;
     label {
-      margin-right: 100px;
+      margin-right: 51px;
+    }
+    p {
+      color: red;
+    }
+  }
+  .input_usertype {
+    height: 65px;
+    label {
+      margin-right: 30px;
+    }
+    p {
+      color: red;
+    }
+  }
+  .input_group {
+    height: 65px;
+    label {
+      margin-right: 78px;
     }
     p {
       color: red;
