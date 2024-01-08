@@ -38,3 +38,53 @@ export async function createMovieAPI(movie) {
     throw error.message;
   }
 }
+
+// LẤY DANH SÁCH PHIM PHÂN TRANG
+export async function getMoviesPanigation() {
+  try {
+    const response = await baseAPI.get("/QuanLyPhim/LayDanhSachPhimPhanTrang", {
+      params: {
+        maNhom: "GP02",
+      },
+    });
+    return response.data.content;
+  } catch (error) {
+    throw error.response.data.content;
+  }
+}
+
+export async function deleteMovie(movieId) {
+  try {
+    const response = await baseAPI.delete("/QuanLyPhim/XoaPhim", {
+      params: {
+        maPhim: movieId,
+      },
+    });
+    return response.data.content;
+  } catch (error) {
+    throw error.response.data.content;
+  }
+}
+
+export async function updateMovie(movie) {
+  try {
+    const response = await baseAPI.post("/QuanLyPhim/CapNhatPhimUpload", movie);
+    return response.data?.content;
+  } catch (error) {
+    throw error.response.data?.content;
+  }
+}
+
+// LẤY CHI TIẾT CỦA MỘT BỘ PHIM
+export async function getMovieDetails(movieId) {
+  try {
+    const response = await baseAPI.get("/QuanLyPhim/LayThongTinPhim", {
+      params: {
+        MaPhim: movieId,
+      },
+    });
+    return response.data.content;
+  } catch (error) {
+    throw error.response.data.content;
+  }
+}

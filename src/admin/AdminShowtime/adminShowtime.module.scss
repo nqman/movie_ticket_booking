@@ -1,5 +1,5 @@
 .form {
-  .input_name {
+  .input_movieID {
     height: 65px;
     label {
       margin-right: 80px;
@@ -8,7 +8,7 @@
       color: red;
     }
   }
-  .input_nickname {
+  .input_cinemaSystems {
     height: 65px;
     label {
       margin-right: 48px;
@@ -17,7 +17,7 @@
       color: red;
     }
   }
-  .input_description {
+  .input_theaters {
     height: 65px;
     label {
       margin-right: 116px;
@@ -26,7 +26,7 @@
       color: red;
     }
   }
-  .input_img {
+  .input_theater_rooms {
     height: 65px;
     label {
       margin-right: 91px;
@@ -34,14 +34,10 @@
     p {
       color: red;
     }
-    input {
-      margin-right: 90px;
-      padding-bottom: 95px;
-    }
   }
 
-  .input_trailer {
-    height: 75px;
+  .input_time {
+    height: 65px;
     label {
       margin-right: 28px;
     }
@@ -49,8 +45,8 @@
       color: red;
     }
   }
-  .input_date {
-    height: 75px;
+  .input_price {
+    height: 65px;
     label {
       margin-right: 100px;
     }

@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import dayjs from "dayjs";
 import { createMovieAPI } from "../../apis/movieAPI";
 import adminMovie from "./adminMovie.module.scss";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
+
 export default function CreateMovie() {
   const [imgPreview, setImgPreview] = useState("");
   const { register, handleSubmit } = useForm({
@@ -37,39 +38,33 @@ export default function CreateMovie() {
       setImgPreview(evt.target.result);
     };
   };
-  // spacing={50}
+
   return (
-    <Grid container justifyContent="center" alignItems="center" mt={10}>
-      <div>
+    <Box sx={{ display: "flex", paddingLeft: "12%" }}>
+      <div className={`${adminMovie.form}`}>
         <h1 className="create pb-4">CreateMovie</h1>
         <form onSubmit={handleSubmit(handleCreateMovie)}>
-          <div>
+          <div className={`${adminMovie.input_name}`}>
             <label>Movie's name</label>
             <input {...register("tenPhim")} />
           </div>
-          <div>
+
+          <div className={`${adminMovie.input_nickname}`}>
             <label> Movies's nickname</label>
             <input {...register("biDanh")} />
           </div>
-          <div>
+
+          <div className={`${adminMovie.input_description}`}>
             <label>Description</label>
             <textarea {...register("moTa")} />
           </div>
-          <div>
-            <label>Imgae</label>
-            <input
-              type="file"
-              {...register("hinhAnh", {
-                onChange: handleChangeImage,
-              })}
-            />
-            {imgPreview && <img src={imgPreview} alt="preview" width={200} height={200} />}
-          </div>
-          <div>
+
+          <div className={`${adminMovie.input_trailer}`}>
             <label>Trailer</label>
             <input {...register("trailer")} />
           </div>
-          <div>
+
+          <div className={`${adminMovie.input_date}`}>
             <label>Movie opening date</label>
             <input
               type="date"
@@ -81,9 +76,20 @@ export default function CreateMovie() {
               })}
             />
           </div>
+
+          <div className={`${adminMovie.input_img}`}>
+            <label>Image</label>
+            <input
+              type="file"
+              {...register("hinhAnh", {
+                onChange: handleChangeImage,
+              })}
+            />
+            {imgPreview && <img src={imgPreview} alt="preview" width={150} height={200} />}
+          </div>
           <button className="btn btn-success">Add Movie</button>
         </form>
       </div>
-    </Grid>
+    </Box>
   );
 }
