@@ -5,7 +5,7 @@ import Signin from "./modules/auth/page/Signin/Signin";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
 import MainLayout from "./components/MainLayout/MainLayout.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
-import AdminRoute from "./routers/AdminRoute.jsx";
+import AdminRoute from "./admin/adminRoutes/AdminRoute.jsx";
 import CreateMovie from "./admin/AddMovie/CreateMovie.jsx";
 import AdminLayout from "./admin/AdminLayout/AdminLayout.jsx";
 import Home from "./modules/Home/pages/Home.jsx";
@@ -13,6 +13,8 @@ import Home from "./modules/Home/pages/Home.jsx";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
+import AdminUser from "./admin/AdminUser/AdminUser.jsx";
+import AdminShowtime from "./admin/AdminShowtime/AdminShowtime.jsx";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
             }
           >
             <Route path="movies/create" element={<CreateMovie />} />
+            <Route path="users/create" element={<AdminUser />} />
+            <Route path="showing/create" element={<AdminShowtime />} />
           </Route>
           {/* protectedadmin */}
           {/* TRANG NOT FOUND */}

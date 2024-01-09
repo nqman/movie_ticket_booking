@@ -23,3 +23,47 @@ export async function signupAPI(credentials) {
     throw error.message;
   }
 }
+
+export const getUserList = async (payload) => {
+  try {
+    const response = await baseAPI.get("/QuanLyNguoiDung/LayDanhSachNguoiDung", {
+      params: {
+        maNhom: "GP02",
+      },
+    });
+    return response.data?.content;
+  } catch (error) {
+    throw error.response.data?.content;
+  }
+};
+
+export const createUser = async (user) => {
+  try {
+    const response = await baseAPI.post("/QuanLyNguoiDung/ThemNguoiDung", user);
+    return response.data?.content;
+  } catch (error) {
+    throw error.response.data?.content;
+  }
+};
+
+export const updateUser = async (user) => {
+  try {
+    const response = await baseAPI.post("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", user);
+    return response.data?.content;
+  } catch (error) {
+    throw error.response.data?.content;
+  }
+};
+
+export async function deleteUser(userAccount) {
+  try {
+    const response = await baseAPI.delete("/QuanLyNguoiDung/XoaNguoiDung", {
+      params: {
+        TaiKhoan: userAccount,
+      },
+    });
+    return response.data.content;
+  } catch (error) {
+    throw error.response.data.content;
+  }
+}
