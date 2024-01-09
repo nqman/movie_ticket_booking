@@ -20,3 +20,20 @@ export async function getLogoCinemaAPI() {
     throw error.response?.data?.content;
   }
 }
+
+export async function getDetailCinemasAPI() {
+  try {
+    const resp = await baseAPI.get(
+      "/QuanLyRap/LayThongTinLichChieuHeThongRap",
+      {
+        params: {
+          maNhom: "GP02",
+        },
+      }
+    );
+
+    return resp.data.content;
+  } catch (error) {
+    throw error.response?.data?.content;
+  }
+}
