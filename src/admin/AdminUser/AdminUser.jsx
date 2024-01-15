@@ -175,10 +175,10 @@ export default function AdminUser() {
   };
   return (
     <div>
-      <Box sx={{ display: "flex", paddingLeft: "12%" }}>
-        <div>
-          <Grid container justifyContent="center" alignItems="center" mt={1}>
-            <div className={`${adminUserStyles.form}`}>
+      <Box sx={{ display: "flex", paddingLeft: "18%" }}>
+        <Grid container>
+          <div className={`${adminUserStyles.form}`}>
+            <Grid item xs={12} md={6}>
               <form onSubmit={handleSubmit(onSubmit, onError)}>
                 <div>
                   {/* TÀI KHOẢN INPUT  */}
@@ -234,7 +234,7 @@ export default function AdminUser() {
                   </div>
 
                   {/* button submit */}
-                  <div className="text-center mt-4">
+                  <div className="text-center mt-2 mb-4">
                     {isUpdating ? (
                       <button className="btn btn-success btn-lg" type="submit" disabled={isLoading}>
                         CẬP NHẬT
@@ -248,53 +248,53 @@ export default function AdminUser() {
                   </div>
                 </div>
               </form>
+            </Grid>
+          </div>
+
+          <Grid item xs={12} md={6} style={{ maxWidth: "100%" }}>
+            <div style={{ height: 550, width: "100%" }}>
+              <DataGrid
+                rows={userList.map((user, index) => ({ ...user, id: index + 1 }))}
+                columns={[
+                  { field: "hoTen", headerName: "Họ tên", width: 200 },
+                  { field: "email", headerName: "Email", width: 200 },
+                  { field: "soDT", headerName: "Số Điện Thoại", width: 200 },
+                  {
+                    field: "maLoaiNguoiDung",
+                    headerName: "LOẠI NGƯỜI DÙNG",
+                    width: 200,
+                    valueGetter: (params) =>
+                      params.value === "KhachHang" ? "Khách hàng" : "Quản trị",
+                  },
+                  {
+                    field: "hanhDong",
+                    headerName: "HÀNH ĐỘNG",
+                    width: 220,
+                    renderCell: (params) => (
+                      <div>
+                        <button
+                          className="btn btn-danger me-3"
+                          onClick={() => handleDeleteUser(params.row.taiKhoan)}
+                        >
+                          XÓA
+                        </button>
+                        <button
+                          className="btn btn-warning me-3"
+                          onClick={() => selectUser(params.row)}
+                        >
+                          {isUpdating ? <span>Updating</span> : <span>Update</span>}
+                        </button>
+                      </div>
+                    ),
+                  },
+                ]}
+                components={{
+                  Toolbar: GridToolbar,
+                }}
+              />
             </div>
           </Grid>
-        </div>
-
-        <div>
-          <div style={{ height: 550, width: "100%", marginRight: "50px" }}>
-            <DataGrid
-              rows={userList.map((user, index) => ({ ...user, id: index + 1 }))}
-              columns={[
-                { field: "hoTen", headerName: "Họ tên", width: 200 },
-                { field: "email", headerName: "Email", width: 200 },
-                { field: "soDT", headerName: "Số Điện Thoại", width: 200 },
-                {
-                  field: "maLoaiNguoiDung",
-                  headerName: "LOẠI NGƯỜI DÙNG",
-                  width: 200,
-                  valueGetter: (params) =>
-                    params.value === "KhachHang" ? "Khách hàng" : "Quản trị",
-                },
-                {
-                  field: "hanhDong",
-                  headerName: "HÀNH ĐỘNG",
-                  width: 220,
-                  renderCell: (params) => (
-                    <div>
-                      <button
-                        className="btn btn-danger me-3"
-                        onClick={() => handleDeleteUser(params.row.taiKhoan)}
-                      >
-                        XÓA
-                      </button>
-                      <button
-                        className="btn btn-warning me-3"
-                        onClick={() => selectUser(params.row)}
-                      >
-                        {isUpdating ? <span>Updating</span> : <span>Update</span>}
-                      </button>
-                    </div>
-                  ),
-                },
-              ]}
-              components={{
-                Toolbar: GridToolbar,
-              }}
-            />
-          </div>
-        </div>
+        </Grid>
       </Box>
     </div>
   );

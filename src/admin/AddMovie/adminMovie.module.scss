@@ -1,61 +1,29 @@
-.form {
-  .input_name {
-    height: 65px;
-    label {
-      margin-right: 80px;
-    }
-    p {
-      color: red;
-    }
-  }
-  .input_nickname {
-    height: 65px;
-    label {
-      margin-right: 48px;
-    }
-    p {
-      color: red;
-    }
-  }
-  .input_description {
-    height: 65px;
-    label {
-      margin-right: 116px;
-    }
-    p {
-      color: red;
-    }
-  }
-  .input_img {
-    height: 65px;
-    label {
-      margin-right: 91px;
-    }
-    p {
-      color: red;
-    }
-    input {
-      margin-right: 90px;
-      padding-bottom: 95px;
-    }
-  }
+.movieAdmin {
+  .container {
+    .form {
+      height: 650px;
+      p {
+        color: red;
+      }
+      .input_container {
+        height: 95px;
+        .form_input {
+          width: 400px;
+          padding: 10px;
+          height: 50px;
+        }
+      }
+      .input_img {
+        height: 50px;
+      }
 
-  .input_trailer {
-    height: 75px;
-    label {
-      margin-right: 28px;
-    }
-    p {
-      color: red;
-    }
-  }
-  .input_date {
-    height: 75px;
-    label {
-      margin-right: 100px;
-    }
-    p {
-      color: red;
+      .image_input {
+        height: 80%;
+        img {
+          height: 500px;
+          width: 500px;
+        }
+      }
     }
   }
 }

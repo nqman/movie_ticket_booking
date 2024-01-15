@@ -62,16 +62,6 @@ export async function bookingTickets(showtimeId, danhSachVe) {
   }
 }
 
-export async function addMovie(movie) {
-  try {
-    const response = await baseAPI.post("/QuanLyPhim/ThemPhimUpLoadHinh", movie);
-    return response.data?.content;
-  } catch (error) {
-    throw error.response.data?.content;
-  }
-}
-
-
 export async function getCinemaTheater(cinemaId) {
   try {
     const response = await baseAPI.get("/QuanLyRap/LayThongTinCumRapTheoHeThong", {
@@ -112,14 +102,11 @@ export async function createShowTime(movie) {
 
 export async function getDetailCinemasAPI() {
   try {
-    const resp = await baseAPI.get(
-      "/QuanLyRap/LayThongTinLichChieuHeThongRap",
-      {
-        params: {
-          maNhom: "GP02",
-        },
-      }
-    );
+    const resp = await baseAPI.get("/QuanLyRap/LayThongTinLichChieuHeThongRap", {
+      params: {
+        maNhom: "GP02",
+      },
+    });
 
     return resp.data.content;
   } catch (error) {

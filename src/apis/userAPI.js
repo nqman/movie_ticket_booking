@@ -67,3 +67,12 @@ export async function deleteUser(userAccount) {
     throw error.response.data.content;
   }
 }
+
+export async function getUserIn4() {
+  try {
+    const response = await baseAPI.post("/QuanLyNguoiDung/ThongTinTaiKhoan");
+    return response.data?.content;
+  } catch (error) {
+    throw error.response.data?.content;
+  }
+}

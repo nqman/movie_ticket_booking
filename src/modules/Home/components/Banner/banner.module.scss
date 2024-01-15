@@ -1,0 +1,29 @@
+.main {
+  .overlay {
+    background: #00000080;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+  }
+  .modal {
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+  }
+  .icon {
+    align-items: center;
+    background: #ffffff80;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 30px;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+}

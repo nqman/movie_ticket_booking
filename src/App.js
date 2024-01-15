@@ -15,6 +15,7 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import AdminUser from "./admin/AdminUser/AdminUser.jsx";
 import AdminShowtime from "./admin/AdminShowtime/AdminShowtime.jsx";
+import User from "./user/components/user/User.jsx";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               }
             />
           </Route>
+          <Route path="/profile" element={<User />} />
           {/* TRANG ĐĂNG KÝ */}
           <Route path="/sign-up" element={<Signup />} />
           {/* TRANG ĐĂNG NHẬP */}
