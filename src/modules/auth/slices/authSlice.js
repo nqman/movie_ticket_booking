@@ -15,7 +15,7 @@ const authSlice = createSlice({
     error: null,
   },
   reducers: {
-    // xử lý logout 
+    // xử lý logout
     logout: (state) => {
       localStorage.removeItem("currentUser");
       state.currentUser = null;

@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { getLogoCinemaAPI, createShowTime, getMovieDetailsAPI } from "../../apis/cinemaAPI";
 import adminShowtimeStyles from "./adminShowtime.module.scss";
 import Swal from "sweetalert2";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 const showtimeSchema = object({
   maHeThongRap: string().required("Hệ thống rạp không được để trống"),
@@ -118,10 +118,7 @@ export default function AdminShowtime() {
     setSelectedTheater(selectedValue);
   };
 
-  const handleSelectCinemaIdChange = async (event) => {
-    // const selectedValue = event.select.value;
-    // console.log(selectedValue);
-  };
+  const handleSelectCinemaIdChange = async (event) => {};
 
   const selectMovie = (movie) => {
     setValue("maPhim", movie.maPhim);
@@ -145,97 +142,106 @@ export default function AdminShowtime() {
     console.log("Lỗi : ", error);
   };
   return (
-    <Box sx={{ display: "flex", paddingLeft: "12%" }}>
-      <div className={`${adminShowtimeStyles.form}`}>
-        <form action="" onSubmit={handleSubmit(onSubmit, onError)}>
-          <div>
-            <div className={`${adminShowtimeStyles.input_movieID}`}>
-              <label htmlFor="">Mã phim</label>
-              <input disabled {...register("maPhim")}></input>
-            </div>
-            <div className={`${adminShowtimeStyles.input_cinemaSystems}`}>
-              <label htmlFor="">Hệ thống rạp</label>
-              <select {...register("maHeThongRap")} onChange={handleSelectChange}>
-                {cinemaList.map((cinema) => {
-                  return (
-                    <option key={cinema.maHeThongRap} value={cinema.maHeThongRap}>
-                      {cinema.maHeThongRap}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div className={`${adminShowtimeStyles.input_theaters}`}>
-              <label htmlFor="">Rạp</label>
-              <select {...register("maRap")} onChange={handleSelectCinemaChange}>
-                {theaterList.map((theater) => {
-                  return (
-                    <option key={theater} value={theater.maCumRap}>
-                      {theater.maCumRap}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div className={`${adminShowtimeStyles.input_theater_rooms}`}>
-              <label htmlFor="">Mã Rạp</label>
-              <select {...register("rapId")} onChange={handleSelectCinemaIdChange}>
-                {maRapList.map((theater) => {
-                  return (
-                    <option key={theater.maRap} value={theater.maRap}>
-                      {theater.maRap}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div className={`${adminShowtimeStyles.input_time}`}>
-              <label htmlFor="">Ngày chiếu giờ chiếu</label>
-              <input placeholder="Ngày Khởi Chiếu" type="text" {...register("ngayChieuGioChieu")} />
-              {errors.ngayChieuGioChieu && <p>{errors.ngayChieuGioChieu.message}</p>}
-            </div>
-            <div className={`${adminShowtimeStyles.input_price}`}>
-              <label htmlFor="">Giá vé</label>
-              <input placeholder="Ngày Khởi Chiếu" type="text" {...register("giaVe")} />
-              {errors.giaVe && <p>{errors.giaVe.message}</p>}
-            </div>
-            <div>
-              <button className="btn btn-success btn-lg m-4" type="submit">
-                TẠO LỊCH
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Tên Phim</th>
-              <th scope="col">Hành Động</th>
-            </tr>
-          </thead>
-          <tbody>
-            {movies.map((movie) => {
-              return (
-                <tr>
-                  <th scope="row">{movie.tenPhim}</th>
-                  <td>
-                    <button
-                      onClick={() => {
-                        selectMovie(movie);
-                      }}
-                      className="btn btn-primary"
-                    >
-                      TẠO LỊCH CHIẾU
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+    <Box sx={{ display: "flex", paddingLeft: "20%" }}>
+      <Grid container>
+        <div className={`${adminShowtimeStyles.form}`}>
+          <Grid item xs={12} md={6} mb={4}>
+            <form action="" onSubmit={handleSubmit(onSubmit, onError)}>
+              <div>
+                <div className={`${adminShowtimeStyles.input_movieID}`}>
+                  <label htmlFor="">Mã phim</label>
+                  <input disabled {...register("maPhim")}></input>
+                </div>
+                <div className={`${adminShowtimeStyles.input_cinemaSystems}`}>
+                  <label htmlFor="">Hệ thống rạp</label>
+                  <select {...register("maHeThongRap")} onChange={handleSelectChange}>
+                    {cinemaList.map((cinema) => {
+                      return (
+                        <option key={cinema.maHeThongRap} value={cinema.maHeThongRap}>
+                          {cinema.maHeThongRap}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className={`${adminShowtimeStyles.input_theaters}`}>
+                  <label htmlFor="">Rạp</label>
+                  <select {...register("maRap")} onChange={handleSelectCinemaChange}>
+                    {theaterList.map((theater) => {
+                      return (
+                        <option key={theater} value={theater.maCumRap}>
+                          {theater.maCumRap}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className={`${adminShowtimeStyles.input_theater_rooms}`}>
+                  <label htmlFor="">Mã Rạp</label>
+                  <select {...register("rapId")} onChange={handleSelectCinemaIdChange}>
+                    {maRapList.map((theater) => {
+                      return (
+                        <option key={theater.maRap} value={theater.maRap}>
+                          {theater.maRap}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className={`${adminShowtimeStyles.input_time}`}>
+                  <label htmlFor="">Ngày chiếu giờ chiếu</label>
+                  <input
+                    placeholder="Ngày Khởi Chiếu"
+                    type="text"
+                    {...register("ngayChieuGioChieu")}
+                  />
+                  {errors.ngayChieuGioChieu && <p>{errors.ngayChieuGioChieu.message}</p>}
+                </div>
+                <div className={`${adminShowtimeStyles.input_price}`}>
+                  <label htmlFor="">Giá vé</label>
+                  <input placeholder="Ngày Khởi Chiếu" type="text" {...register("giaVe")} />
+                  {errors.giaVe && <p>{errors.giaVe.message}</p>}
+                </div>
+                <div>
+                  <button className="btn btn-success btn-lg m-4" type="submit">
+                    TẠO LỊCH
+                  </button>
+                </div>
+              </div>
+            </form>
+          </Grid>
+        </div>
+
+        <Grid item xs={12} md={6}>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Tên Phim</th>
+                <th scope="col">Hành Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              {movies.map((movie) => {
+                return (
+                  <tr>
+                    <th scope="row">{movie.tenPhim}</th>
+                    <td>
+                      <button
+                        onClick={() => {
+                          selectMovie(movie);
+                        }}
+                        className="btn btn-primary"
+                      >
+                        TẠO LỊCH CHIẾU
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

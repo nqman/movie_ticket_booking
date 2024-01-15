@@ -10,7 +10,10 @@ import {
   Popover,
   Toolbar,
   Tooltip,
+  MenuItem,
   Typography,
+  Menu,
+  useScrollTrigger,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
@@ -19,10 +22,22 @@ import { SigninAndSignup, SpanHeader } from "./stylesHeader";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import { logout } from "../../modules/auth/slices/authSlice";
-import Swal from "sweetalert2";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import Swal from "sweetalert2";
+function ElevationScroll(props) {
+  const { children, window } = props;
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
+}
+
 export default function Header(props) {
   const pages = [
     { id: "showing", label: "Lịch chiếu" },
@@ -35,6 +50,7 @@ export default function Header(props) {
   const currentUser = useSelector((state) => state.auth.currentUser);
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleLogout = () => {
     closePopover();
@@ -90,14 +106,25 @@ export default function Header(props) {
     buttonsStyling: false,
   });
 
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+    const element = document.getElementById(`${pages.id}`);
+    element.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <CssBaseline />
 
-      <AppBar color="default">
+      <AppBar color="default" position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <LiveTvIcon sx={{ display: { xs: "none", md: "flex" }, mb: 1 }} color="#1976D2" />
+            <LiveTvIcon
+              sx={{ display: { xs: "none", md: "flex" }, mb: 1.5, mr: 1, color: "#1976D2" }}
+            />
             <Typography
               variant="h6"
               noWrap
@@ -116,18 +143,44 @@ export default function Header(props) {
               Trung & Mẫn MOVIE
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <Box sx={{ flexGrow: 3 }} />
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
+                onClick={handleOpenNavMenu}
                 color="inherit"
               >
                 <MenuIcon />
               </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                    <Typography textAlign="center">{page.label}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
-            <LiveTvIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} color="error" />
+            <LiveTvIcon
+              sx={{ display: { xs: "flex", md: "none" }, mb: 1.5, mr: 1, color: "#1976D2" }}
+            />
             <Typography
               variant="h5"
               component="a"
@@ -203,6 +256,9 @@ export default function Header(props) {
                         </Typography>
                         <Button onClick={handleProfile} sx={{ mb: 1 }}>
                           Trang cá nhân
+                        </Button>
+                        <Button onClick={() => navigate(`/admin`)} sx={{ mb: 1 }}>
+                          Is Admin
                         </Button>
                         <Button onClick={handleLogout} sx={{ mb: 1 }}>
                           Đăng xuất
