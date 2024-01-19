@@ -21,7 +21,7 @@ export default function Cinema() {
 
   return (
     <div id="cinema" className="cinema">
-      {/* DESKTOP*/}
+      {/* WEB*/}
       <div className="cinema_system">
         <Tabs defaultActiveKey="1" tabPosition="left">
           {cinema?.map((cinemaSystem) => {
