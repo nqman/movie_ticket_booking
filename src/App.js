@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 import AdminUser from "./admin/AdminUser/AdminUser.jsx";
 import AdminShowtime from "./admin/AdminShowtime/AdminShowtime.jsx";
 import User from "./user/components/user/User.jsx";
+import MovieTicket from "./modules/Ticket/MovieTicket.jsx";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
               path="/tickets/:ticketId"
               element={
                 <PrivateRoute>
-                  <h1>Tickets</h1>
+                  <MovieTicket />
                 </PrivateRoute>
               }
             />
