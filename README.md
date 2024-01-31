@@ -1,5 +1,25 @@
-Tạo folder:
++ Ghi chú về dự án Project-Movie-BC55
 
+Người phụ trách: Trần Nguyễn Thành Trung
+		             Nguyễn Quang Mẫn	
+Menter: Lê Hữu Trường
+Giảng viên: Nguyễn Đức Dân
+
+Chi tiết task: https://docs.google.com/spreadsheets/d/1hspXR51MOTdpxbCmnk8khoD7p-ZQusyWWMWggSvf0Tk/edit#gid=0  
+GitHub: https://github.com/nqman/movie_ticket_booking  
+Deploy: https://movie-ticket-booking-tm.vercel.app/  
+Youtube: https://youtu.be/KkgygQ89cpc  
+Account để test:
+Admin:  	+Tài khoản: BC55admin
++Mật khẩu: BC55admin
+
+User:  	+Tài khoản: trung
++Mật khẩu: Trungvip123
+
+
+
+
+Tạo folder:
 - bắt đầu từ: src/
 
   - components/: Các common components được sử dụng nhiều nơi trong project
