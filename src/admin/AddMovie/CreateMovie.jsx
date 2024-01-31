@@ -16,7 +16,6 @@ const movieFormSchema = object({
   tenPhim: string().required("Tên phim không được để trống"),
   biDanh: string().required("Bí danh không được để trống"),
   moTa: string().required("Mô tả không được để trống"),
-  // hinhAnh: string().required("Hình ảnh không được để trống"),
   trailer: string().required("Trailer không được để trống"),
   ngayKhoiChieu: string().required("Ngày khởi chiếu không được để trống"),
 });
@@ -97,7 +96,7 @@ export default function CreateMovie() {
   };
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
-    console.log(inputValue); // In ra giá trị mỗi khi người dùng gõ
+    console.log(inputValue);
 
     // Lưu giá trị vào state
     setValue(inputValue);

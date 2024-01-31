@@ -1,0 +1,103 @@
+.user {
+  .user-main {
+    display: flex;
+
+    .user-info {
+      height: 100vh;
+      width: 300px;
+      background: #eee;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      padding: 20px;
+
+      .user-photo {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        margin: 0 auto;
+        background: orange;
+        color: #eee;
+        border-radius: 50%;
+        font-size: 100px;
+        font-weight: 500;
+      }
+
+      .user-name {
+        margin-top: 20px;
+        font-size: 30px;
+        font-weight: 500;
+      }
+
+      .user-type {
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .user-info-booking {
+        margin-top: 200px;
+      }
+    }
+
+    .user-show {
+      width: 100%;
+      margin: 20px 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .user-main {
+    .user-info {
+      width: 150px !important;
+      height: auto !important;
+
+      .user-photo {
+        width: 100px !important;
+        height: 100px !important;
+        line-height: 100px !important;
+        font-size: 50px !important;
+      }
+
+      .user-name {
+        margin-top: 10px !important;
+        font-size: 18px !important;
+      }
+
+      .user-type {
+        font-size: 12px !important;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .user-main {
+    .user-info {
+      width: 100px !important;
+      height: auto !important;
+      background: #eee;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      padding: 20px;
+
+      .user-photo {
+        width: 50px !important;
+        height: 50px !important;
+        line-height: 50px !important;
+        font-size: 20px !important;
+      }
+
+      .user-name {
+        margin-top: 5px !important;
+        font-size: 12px !important;
+        font-weight: 500;
+      }
+
+      .user-info-booking {
+        margin-top: 200px;
+      }
+    }
+  }
+}

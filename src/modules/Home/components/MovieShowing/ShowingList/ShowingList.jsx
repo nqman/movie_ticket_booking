@@ -8,7 +8,6 @@ import { Desc, NameMovie } from "./stylesShowList";
 import { getMoviesAPI } from "../../../../../apis/movieAPI";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid, Pagination } from "swiper/modules";
 
 import { Box, Modal } from "@mui/material";
 
@@ -47,9 +46,9 @@ export default function ShowingList() {
   };
 
   return (
-    <>
+    <div className="pt-5 pb-2">
       <Container>
-        <Row sx={{ mt: 4 }}>
+        <Row sx={{ mt: 5 }}>
           {showing.map((item, index) => {
             const isHovered = index === hoveredSlide;
             return (
@@ -66,7 +65,7 @@ export default function ShowingList() {
                   <img
                     src={item.hinhAnh}
                     alt={item.tenPhim}
-                    style={{ width: "100%", height: "400px" }}
+                    style={{ width: "100%", height: "300px" }}
                   />
                   <Box
                     onClick={() => handleOpen(item)}
@@ -74,10 +73,10 @@ export default function ShowingList() {
                       backgroundColor: "#000000a7",
                       color: "#fff",
                       position: "absolute",
-                      top: "40px",
+                      top: "0",
                       left: "0",
                       width: "100%",
-                      height: "77%",
+                      height: "80%",
                       zIndex: "1201",
                       opacity: "0",
                       borderRadius: "10px",
@@ -112,7 +111,6 @@ export default function ShowingList() {
                         left: "50%",
                         width: "95%",
                         transform: "translateX(-50%)",
-                        marginBottom: "-5%",
                       }}
                       onClick={() => navigate(`/movies/${item.maPhim}`)}
                     >
@@ -157,6 +155,6 @@ export default function ShowingList() {
           <ReactPlayer url={trailerMovie} width="60vw" height="60vh" controls={true} />
         </Box>
       </Modal>
-    </>
+    </div>
   );
 }

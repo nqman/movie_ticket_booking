@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Detail from "./modules/detail/pages/Detail.jsx";
 import Signup from "./modules/auth/page/Signup/Signup.jsx";
 import Signin from "./modules/auth/page/Signin/Signin";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
@@ -15,8 +14,9 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import AdminUser from "./admin/AdminUser/AdminUser.jsx";
 import AdminShowtime from "./admin/AdminShowtime/AdminShowtime.jsx";
-import User from "./user/components/user/User.jsx";
+import User from "./user/pages/user/User.jsx";
 import MovieTicket from "./modules/Ticket/MovieTicket.jsx";
+import Details from "./modules/detail/pages/Details.jsx";
 
 function App() {
   return (
@@ -26,7 +26,9 @@ function App() {
           {/* Phàn người dùng */}
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="/details/:movieId" element={<Detail />} />
+            {/* TRANG DETAIL  */}
+            <Route path="movies/:movieId" element={<Details />} />
+
             <Route
               path="/tickets/:ticketId"
               element={
@@ -54,7 +56,7 @@ function App() {
             <Route path="users/create" element={<AdminUser />} />
             <Route path="showing/create" element={<AdminShowtime />} />
           </Route>
-          {/* protectedadmin */}
+
           {/* TRANG NOT FOUND */}
           <Route path="*" element={<NotFound />} />
         </Routes>

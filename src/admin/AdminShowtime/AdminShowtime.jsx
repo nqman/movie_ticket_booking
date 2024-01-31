@@ -4,7 +4,7 @@ import { getMoviesAPI } from "../../apis/movieAPI";
 import { object, string } from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { getLogoCinemaAPI, createShowTime, getMovieDetailsAPI } from "../../apis/cinemaAPI";
+import { createShowTime, getCinemaTheater, getLogoCinemaAPI } from "../../apis/cinemaAPI";
 import adminShowtimeStyles from "./adminShowtime.module.scss";
 import Swal from "sweetalert2";
 import { Box, Grid } from "@mui/material";
@@ -58,7 +58,7 @@ export default function AdminShowtime() {
     // Gọi API và cập nhật state khi component được tạo
     const fetchData = async () => {
       try {
-        const response = await getMovieDetailsAPI(/* cinemaId hoặc params khác tùy theo API */);
+        const response = await getLogoCinemaAPI(/* cinemaId hoặc params khác tùy theo API */);
         // response chứa dữ liệu từ API (danh sách hệ thống rạp)
         setCinemaList(response);
       } catch (error) {
@@ -76,7 +76,7 @@ export default function AdminShowtime() {
     if (selectedCinema) {
       try {
         const getCinemaTheaterData = async () => {
-          const response = await getLogoCinemaAPI(selectedCinema);
+          const response = await getCinemaTheater(selectedCinema);
           console.log(response);
           setTheaterList(response);
         };
@@ -118,7 +118,10 @@ export default function AdminShowtime() {
     setSelectedTheater(selectedValue);
   };
 
-  const handleSelectCinemaIdChange = async (event) => {};
+  const handleSelectCinemaIdChange = async (event) => {
+    // const selectedValue = event.select.value;
+    // console.log(selectedValue);
+  };
 
   const selectMovie = (movie) => {
     setValue("maPhim", movie.maPhim);

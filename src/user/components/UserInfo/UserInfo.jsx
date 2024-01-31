@@ -1,10 +1,24 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { getUserIn4 } from "../../../apis/userAPI";
+import { notification } from "antd";
+import "./UserInfo.module.scss";
+import Swal from "sweetalert2";
+import { updateUserClient } from "../../../apis/userAPI";
 
-export default function UserInfo() {
+export default function UserInfo({ userInfo }) {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    reset({
+      taiKhoan: userInfo?.taiKhoan,
+      matKhau: userInfo?.matKhau,
+      email: userInfo?.email,
+      soDt: userInfo?.soDT,
+      hoTen: userInfo?.hoTen,
+      maLoaiNguoiDung: userInfo?.maLoaiNguoiDung,
+    });
+  }, [userInfo]);
 
   const {
     reset,
@@ -23,34 +37,22 @@ export default function UserInfo() {
     mode: "onTouched",
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await dispatch(getUserIn4()); // Gọi API để lấy thông tin cá nhân
-        const userInfo = response.data; // Giả sử phản hồi API trả về dữ liệu người dùng
-
-        reset({
-          taiKhoan: userInfo?.taiKhoan,
-          matKhau: userInfo?.matKhau,
-          email: userInfo?.email,
-          soDt: userInfo?.soDt,
-          hoTen: userInfo?.hoTen,
-          maLoaiNguoiDung: userInfo?.maLoaiNguoiDung,
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch, reset]);
-
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (values) => {
+    console.log(values);
     try {
-      await dispatch(getUserIn4(data));
+      await dispatch(updateUserClient(values)).unwrap();
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
-      console.error(error);
+      notification.error({
+        message: "Cập nhật thất bại",
+        description: error,
+      });
     }
   };
 
@@ -93,11 +95,11 @@ export default function UserInfo() {
                   },
                   minLength: {
                     value: 3,
-                    message: "Mật khẩu phải từ 4 đến 8 ký tự",
+                    message: "Mật khẩu phải từ 4 đến 12 ký tự",
                   },
                   maxLength: {
-                    value: 8,
-                    message: "Mật khẩu phải từ 4 đến 8 ký tự",
+                    value: 12,
+                    message: "Mật khẩu phải từ 4 đến 12 ký tự",
                   },
                 })}
               />

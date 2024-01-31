@@ -1,0 +1,80 @@
+.movie_detail {
+  margin-top: 50px;
+  .movie_container {
+    height: 800px;
+    position: relative;
+
+    background-position: center;
+
+    .movie_background {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-repeat: none;
+      background-size: cover;
+
+      filter: blur(10px);
+    }
+
+    .movie_row {
+      width: 85%;
+      position: absolute;
+      height: 100%;
+      padding: 50px;
+      top: 50%;
+      left: 50%;
+      // background-color: #222222;
+      transform: translate(-50%, -50%);
+
+      @media screen and (max-width: 768px) {
+        width: 108%;
+      }
+
+      .movie_pic {
+        .movie_pic_container {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          img {
+            // height: 480px;
+            // width: 680px;
+            // border-radius: 5px;
+            // background-size: contain;
+            // margin-top: 8px;
+            width: 50%;
+            height: 100%;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          padding: 0;
+          margin-left: 13px;
+        }
+      }
+
+      .movie_text {
+        color: white;
+        h2 {
+          color: #d9cb46;
+        }
+
+        p {
+          font-size: 20px;
+        }
+        @media screen and (max-width: 768px) {
+          text-align: center;
+          margin-top: 30px; // Đặt width là 100% khi màn hình nhỏ hơn hoặc bằng 768px
+          margin-left: 13px;
+        }
+
+        .movie_text_duration {
+        }
+      }
+    }
+  }
+}

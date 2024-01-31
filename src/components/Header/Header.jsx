@@ -40,11 +40,11 @@ function ElevationScroll(props) {
 
 export default function Header(props) {
   const pages = [
-    { id: "showing", label: "Lịch chiếu" },
-    { id: "cinema", label: "Cụm rạp" },
-    { id: "tintuc", label: "Tin tức" },
-    { id: "ungdung", label: "Ứng dụng" },
+    <MenuItem key="item1">Item 1</MenuItem>,
+    <MenuItem key="item2">Item 2</MenuItem>,
+    <MenuItem key="item3">Item 3</MenuItem>,
   ];
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -109,10 +109,15 @@ export default function Header(props) {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleCloseNavMenu = () => {
+
+  const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
-    const element = document.getElementById(`${pages.id}`);
-    element.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(`${page.id}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log(`Không tìm thấy phần tử với id ${page.id}`);
+    }
   };
 
   return (
@@ -171,11 +176,31 @@ export default function Header(props) {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                {pages.map((page) => [
+                  <MenuItem key={page.id} onClick={() => handleCloseNavMenu(page.id)}>
                     <Typography textAlign="center">{page.label}</Typography>
-                  </MenuItem>
-                ))}
+                  </MenuItem>,
+                ])}
+                {currentUser
+                  ? [
+                      <MenuItem key="profile" onClick={handleProfile}>
+                        <Typography>Trang cá nhân</Typography>
+                      </MenuItem>,
+                      <MenuItem key="admin" onClick={() => navigate(`/admin`)}>
+                        <Typography>Is Admin</Typography>
+                      </MenuItem>,
+                      <MenuItem key="logout" onClick={handleLogout}>
+                        <Typography>Đăng xuất</Typography>
+                      </MenuItem>,
+                    ]
+                  : [
+                      <MenuItem key="signin" onClick={() => navigate(`/sign-in`)}>
+                        <Typography>Đăng nhập</Typography>
+                      </MenuItem>,
+                      <MenuItem key="signup" onClick={() => navigate(`/sign-up`)}>
+                        <Typography>Đăng kí</Typography>
+                      </MenuItem>,
+                    ]}
               </Menu>
             </Box>
             <LiveTvIcon
@@ -268,22 +293,6 @@ export default function Header(props) {
                   </Box>
                 ) : (
                   <>
-                    {/* admin */}
-                    <Box sx={{ flexGrow: 0 }}>
-                      <IconButton
-                        sx={{
-                          "&:hover": {
-                            color: "rgb(211, 47, 47)",
-                            backgroundColor: "transparent",
-                          },
-                        }}
-                      >
-                        <Typography onClick={() => navigate(`/admin`)}>
-                          Bạn có phải là Admin?
-                        </Typography>
-                      </IconButton>
-                    </Box>
-
                     {/* Signin */}
                     <Box sx={{ flexGrow: 0 }}>
                       <SigninAndSignup

@@ -28,7 +28,7 @@ export const getUserList = async (payload) => {
   try {
     const response = await baseAPI.get("/QuanLyNguoiDung/LayDanhSachNguoiDung", {
       params: {
-        maNhom: "GP02",
+        maNhom: "GP09",
       },
     });
     return response.data?.content;
@@ -68,11 +68,27 @@ export async function deleteUser(userAccount) {
   }
 }
 
-export async function getUserIn4() {
+export async function getUserIn4(account) {
   try {
-    const response = await baseAPI.post("/QuanLyNguoiDung/ThongTinTaiKhoan");
+    const response = await baseAPI.post("/QuanLyNguoiDung/ThongTinTaiKhoan", {
+      params: {
+        taiKhoan: account,
+      },
+    });
     return response.data?.content;
   } catch (error) {
     throw error.response.data?.content;
+  }
+}
+
+export async function updateUserClient(values) {
+  try {
+    const response = await baseAPI.put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", {
+      ...values,
+      maNhom: "GP09",
+    });
+    return response.data?.content;
+  } catch (error) {
+    throw new Error(error.response.data?.content);
   }
 }

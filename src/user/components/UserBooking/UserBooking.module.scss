@@ -1,0 +1,56 @@
+.user-history {
+  height: 300px;
+  .user-history-title {
+    font-size: 25px;
+    color: red;
+    margin-bottom: 20px;
+  }
+
+  .user-history-booking {
+    height: 250px;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .user-history {
+    height: 200px;
+    .user-history-booking {
+      align-self: center;
+      width: 99%;
+      height: 150px;
+      .table {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-history {
+    .user-history-title {
+      font-size: 20px;
+    }
+
+    .user-history-booking {
+      width: 350px;
+      overflow-x: scroll;
+      .table {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .user-history {
+    .user-history-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .user-history-booking {
+      width: 200px;
+    }
+  }
+}
