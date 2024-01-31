@@ -40,9 +40,10 @@ function ElevationScroll(props) {
 
 export default function Header(props) {
   const pages = [
-    <MenuItem key="item1">Item 1</MenuItem>,
-    <MenuItem key="item2">Item 2</MenuItem>,
-    <MenuItem key="item3">Item 3</MenuItem>,
+    { id: "showing", label: "Lịch chiếu" },
+    { id: "cinema", label: "Cụm rạp" },
+    { id: "tintuc", label: "Tin tức" },
+    { id: "ungdung", label: "Ứng dụng" },
   ];
 
   const dispatch = useDispatch();
