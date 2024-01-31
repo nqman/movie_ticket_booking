@@ -5,6 +5,7 @@ import { signin } from "../../slices/authSlice";
 import { Navigate, useSearchParams } from "react-router-dom";
 import formStyles from "../../components/formStyles.module.scss";
 import Swal from "sweetalert2";
+
 export default function Signin() {
   const {
     register,
@@ -26,17 +27,15 @@ export default function Signin() {
   const handleSignin = async (values) => {
     try {
       await dispatch(signin(values)).unwrap();
-      // Swal.fire({
-      //   position: "top-end",
-      //   icon: "success",
-      //   title: "Your work has been saved",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // }).then(() => {
-      //   // Chuyển hướng đến trang chủ
-      //   window.location.href = "/";
-      // });
-      alert("Login success");
+
+      await Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      // alert("Login success");
     } catch (error) {
       Swal.fire({
         icon: "error",

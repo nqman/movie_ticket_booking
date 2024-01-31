@@ -1,0 +1,52 @@
+.user-update {
+    margin-bottom: 50px;
+    width: 100%;
+    .user-title {
+      font-size: 25px;
+      color: red;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .user-update {
+      form {
+        font-size: 14px;
+  
+        input {
+          padding: 5px 8px;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .user-update {
+      .user-title {
+        font-size: 20px;
+      }
+  
+      form {
+        label {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .user-update {
+      .user-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+  
+      form {
+        font-size: 12px;
+  
+        input {
+          padding: 4px 5px;
+        }
+      }
+    }
+  }

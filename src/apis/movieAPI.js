@@ -13,7 +13,7 @@ export async function getMoviesAPI() {
   try {
     const resp = await baseAPI.get("/QuanLyPhim/LayDanhSachPhim", {
       params: {
-        maNhom: "GP02",
+        maNhom: "GP09",
       },
     });
 
@@ -28,7 +28,7 @@ export async function createMovieAPI(movie) {
     for (let key in movie) {
       formData.append(key, movie[key]);
     }
-    formData.append("maNhom", "GP02");
+    formData.append("maNhom", "GP09");
     const resp = await baseAPI.post("/quanlyphim/themphimuploadhinh", formData);
     return resp.data.content;
   } catch (error) {
@@ -44,7 +44,7 @@ export async function getMoviesPanigation() {
   try {
     const response = await baseAPI.get("/QuanLyPhim/LayDanhSachPhimPhanTrang", {
       params: {
-        maNhom: "GP02",
+        maNhom: "GP09",
       },
     });
     return response.data.content;

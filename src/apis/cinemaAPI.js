@@ -2,7 +2,7 @@ import baseAPI from "./baseAPI";
 
 export async function getMovieDetailsAPI(movieId) {
   try {
-    const resp = await baseAPI.get("quanlyrap/laythongtinlichchieuphim", {
+    const resp = await baseAPI.get("QuanLyRap/LayThongTinLichChieuPhim", {
       params: {
         maPhim: movieId,
       },
@@ -64,14 +64,11 @@ export async function bookingTickets(showtimeId, danhSachVe) {
 
 export async function getCinemaTheater(cinemaId) {
   try {
-    const response = await baseAPI.get(
-      "/QuanLyRap/LayThongTinCumRapTheoHeThong",
-      {
-        params: {
-          maHeThongRap: cinemaId,
-        },
-      }
-    );
+    const response = await baseAPI.get("/QuanLyRap/LayThongTinCumRapTheoHeThong", {
+      params: {
+        maHeThongRap: cinemaId,
+      },
+    });
 
     return response.data.content;
   } catch (error) {
@@ -81,15 +78,12 @@ export async function getCinemaTheater(cinemaId) {
 
 export async function getCinemaShowTimes(cinemaId) {
   try {
-    const response = await baseAPI.get(
-      "/QuanLyRap/LayThongTinLichChieuHeThongRap",
-      {
-        params: {
-          maHeThongRap: cinemaId,
-          maNhom: "GP02",
-        },
-      }
-    );
+    const response = await baseAPI.get("/QuanLyRap/LayThongTinLichChieuHeThongRap", {
+      params: {
+        maHeThongRap: cinemaId,
+        maNhom: "GP09",
+      },
+    });
 
     return response.data.content;
   } catch (error) {
@@ -108,14 +102,11 @@ export async function createShowTime(movie) {
 
 export async function getDetailCinemasAPI() {
   try {
-    const resp = await baseAPI.get(
-      "/QuanLyRap/LayThongTinLichChieuHeThongRap",
-      {
-        params: {
-          maNhom: "GP02",
-        },
-      }
-    );
+    const resp = await baseAPI.get("/QuanLyRap/LayThongTinLichChieuHeThongRap", {
+      params: {
+        maNhom: "GP09",
+      },
+    });
 
     return resp.data.content;
   } catch (error) {
