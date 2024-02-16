@@ -1,0 +1,223 @@
+.ticketSeat {
+  max-width: 90%;
+  margin: 10px auto 0;
+
+  .ticket-light {
+    border-bottom: 15px solid #666;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    width: 100%;
+    box-shadow: 0px 20px 35px yellow;
+  }
+
+  .ticket-seats {
+    margin-top: 50px;
+    text-align: center;
+    .ticket-seat {
+      width: 40px;
+      height: 40px;
+      margin: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      outline: none;
+      font-weight: 500;
+      background: gray;
+      color: #eee;
+      opacity: 1;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    .ticket-vip {
+      background: rgb(222, 222, 52);
+      color: #555;
+    }
+
+    .ticket-booked {
+      width: 40px;
+      height: 40px;
+      margin: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      outline: none;
+      font-weight: 500;
+      background: red;
+      color: #eee;
+      cursor: not-allowed !important;
+    }
+
+    .ticket-checked {
+      background: rgb(94, 231, 94);
+      color: #555;
+    }
+  }
+
+  .ticket-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .booked,
+    .vip,
+    .regular,
+    .checked {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      outline: none;
+      font-weight: 500;
+      margin: 20px 20px 0;
+    }
+
+    .booked {
+      background: red;
+      line-height: 40px;
+      text-align: center;
+      color: #eee;
+    }
+
+    .vip {
+      background: rgb(222, 222, 52);
+    }
+
+    .regular {
+      background: gray;
+    }
+
+    .checked {
+      background: rgb(94, 231, 94);
+    }
+
+    .title {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: #777;
+      margin-top: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .booking {
+    max-width: 100%;
+
+    .booking-seats {
+      .booking-seat {
+        width: 30px;
+        height: 30px;
+        margin: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        outline: none;
+        font-size: 14px;
+        font-weight: 500;
+        background: gray;
+        color: #eee;
+      }
+
+      .booking-vip {
+        background: rgb(222, 222, 52);
+        color: #555;
+      }
+
+      .booking-checked {
+        background: rgb(94, 231, 94);
+        color: #555;
+      }
+
+      .booking-booked {
+        width: 30px;
+        height: 30px;
+        margin: 6px;
+        outline: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .booking {
+    .booking-seats {
+      .booking-seat {
+        width: 25px;
+        height: 25px;
+        margin: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .booking-booked {
+        width: 25px;
+        height: 25px;
+        margin: 4px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .booking {
+    overflow: hidden;
+    .booking-seats {
+      overflow-x: scroll;
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #d6cfcf;
+      }
+      &::-webkit-scrollbar {
+        height: 8px;
+        background-color: #f5f5f5;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: block;
+      }
+
+      .booking-list {
+        width: 650px;
+        margin-bottom: 30px;
+
+        .booking-seat {
+          width: 30px;
+          height: 30px;
+          margin: 5px;
+          font-weight: 500;
+        }
+
+        .booking-booked {
+          width: 30px;
+          height: 30px;
+          margin: 5px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .booking-sub {
+      .booked,
+      .vip,
+      .regular,
+      .checked {
+        width: 30px;
+        height: 30px;
+      }
+
+      .booked {
+        line-height: 30px;
+      }
+
+      .title {
+        font-size: 14px;
+      }
+    }
+  }
+}

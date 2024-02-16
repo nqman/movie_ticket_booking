@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { signin } from "../../slices/authSlice";
+import { signin } from "../../../../Redux/slices/authSlice";
 import { Navigate, useSearchParams } from "react-router-dom";
 import formStyles from "../../components/formStyles.module.scss";
 import Swal from "sweetalert2";

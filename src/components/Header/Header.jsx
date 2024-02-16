@@ -21,7 +21,7 @@ import { AccountCircle } from "@mui/icons-material";
 import { SigninAndSignup, SpanHeader } from "./stylesHeader";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { logout } from "../../modules/auth/slices/authSlice";
+import { logout } from "../../Redux/slices/authSlice";
 
 import Swal from "sweetalert2";
 function ElevationScroll(props) {

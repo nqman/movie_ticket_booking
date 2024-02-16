@@ -68,13 +68,9 @@ export async function deleteUser(userAccount) {
   }
 }
 
-export async function getUserIn4(account) {
+export async function getUserIn4() {
   try {
-    const response = await baseAPI.post("/QuanLyNguoiDung/ThongTinTaiKhoan", {
-      params: {
-        taiKhoan: account,
-      },
-    });
+    const response = await baseAPI.post("/QuanLyNguoiDung/ThongTinTaiKhoan");
     return response.data?.content;
   } catch (error) {
     throw error.response.data?.content;

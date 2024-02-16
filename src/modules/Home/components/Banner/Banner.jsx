@@ -4,7 +4,7 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import ReactPlayer from "react-player/lazy";
 import ClearIcon from "@mui/icons-material/Clear";
 import { getBannerAPI } from "../../../../apis/movieAPI";
-import useRequest from "../../../../hook/useRequest";
+import useRequest from "../../../../hooks/useRequest";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
