@@ -66,9 +66,9 @@ export async function deleteMovie(movieId) {
   }
 }
 
-export async function updateMovie(movie) {
+export async function updateMovie(movieId) {
   try {
-    const response = await baseAPI.post("/QuanLyPhim/CapNhatPhimUpload", movie);
+    const response = await baseAPI.post("/QuanLyPhim/CapNhatPhimUpload", movieId);
     return response.data?.content;
   } catch (error) {
     throw error.response.data?.content;

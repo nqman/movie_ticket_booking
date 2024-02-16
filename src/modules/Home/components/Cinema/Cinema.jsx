@@ -1,6 +1,6 @@
 import React from "react";
 import { Collapse, Tabs } from "antd";
-import useRequest from "../../../../hook/useRequest";
+import useRequest from "../../../../hooks/useRequest";
 import { getDetailCinemasAPI } from "../../../../apis/cinemaAPI";
 import { useNavigate } from "react-router-dom";
 import * as dayjs from "dayjs";
@@ -40,11 +40,7 @@ export default function Cinema() {
                   </div>
                 }
               >
-                <Tabs
-                  className="tab_info"
-                  defaultActiveKey="1"
-                  tabPosition="left"
-                >
+                <Tabs className="tab_info" defaultActiveKey="1" tabPosition="left">
                   {cinemaSystem.lstCumRap?.slice(0, 10).map((cinemaComplex) => {
                     return (
                       <Tabs.TabPane
@@ -52,12 +48,8 @@ export default function Cinema() {
                         key={cinemaComplex.maCumRap}
                         tab={
                           <div className="cinema_info">
-                            <h3 className="cinema_name">
-                              {cinemaComplex.tenCumRap}
-                            </h3>
-                            <p className="cinema_address">
-                              {cinemaComplex.diaChi}
-                            </p>
+                            <h3 className="cinema_name">{cinemaComplex.tenCumRap}</h3>
+                            <p className="cinema_address">{cinemaComplex.diaChi}</p>
                             <span className="cinema_detail">[chi tiết]</span>
                           </div>
                         }
@@ -76,28 +68,22 @@ export default function Cinema() {
 
                               <div className="cinema_title">
                                 <h1>
-                                  {film.hot && (
-                                    <span className="cinema_sub">HOT</span>
-                                  )}
+                                  {film.hot && <span className="cinema_sub">HOT</span>}
                                   {film.tenPhim}
                                 </h1>
-                                {film.lstLichChieuTheoPhim
-                                  ?.slice(0, 4)
-                                  .map((showtimes, idx) => {
-                                    return (
-                                      <button
-                                        key={idx}
-                                        className="cinema_date"
-                                        onClick={() =>
-                                          handleBooking(showtimes.maLichChieu)
-                                        }
-                                      >
-                                        {dayjs(
-                                          showtimes.ngayChieuGioChieu
-                                        ).format("DD-MM-YYYY ~ HH:MM")}
-                                      </button>
-                                    );
-                                  })}
+                                {film.lstLichChieuTheoPhim?.slice(0, 4).map((showtimes, idx) => {
+                                  return (
+                                    <button
+                                      key={idx}
+                                      className="cinema_date"
+                                      onClick={() => handleBooking(showtimes.maLichChieu)}
+                                    >
+                                      {dayjs(showtimes.ngayChieuGioChieu).format(
+                                        "DD-MM-YYYY ~ HH:MM"
+                                      )}
+                                    </button>
+                                  );
+                                })}
                               </div>
                             </div>
                           );
@@ -131,68 +117,48 @@ export default function Cinema() {
                 key={index + 1}
               >
                 <Collapse>
-                  {cinemaSystem.lstCumRap
-                    ?.slice(0, 10)
-                    .map((cinemaComplex, idx) => {
-                      return (
-                        <Panel
-                          header={
-                            <div className="cinema_info_mobile">
-                              <h3 className="cinema_name_mobile">
-                                {cinemaComplex.tenCumRap}
-                              </h3>
-                              <p className="cinema_address_mobile">
-                                {cinemaComplex.diaChi}
-                              </p>
-                              <span className="cinema_detail_mobile">
-                                [chi tiết]
-                              </span>
-                            </div>
-                          }
-                          key={idx + 1}
-                        >
-                          {cinemaComplex.danhSachPhim.map((film, filmIndex) => {
-                            return (
-                              <div
-                                key={filmIndex}
-                                className="d-flex align-items-center mb-3"
-                              >
-                                <div>
-                                  <img
-                                    width={60}
-                                    height={80}
-                                    src={film.hinhAnh}
-                                    alt={film.maPhim}
-                                  />
-                                </div>
-                                <div className="ms-3">
-                                  <p className="name_film_mobile">
-                                    {film.tenPhim}
-                                  </p>
-                                  {film.lstLichChieuTheoPhim
-                                    ?.slice(0, 4)
-                                    .map((showtimes, showtimesIndex) => {
-                                      return (
-                                        <button
-                                          key={showtimesIndex}
-                                          className="cinema_date_mobile"
-                                          onClick={() =>
-                                            handleBooking(showtimes.maLichChieu)
-                                          }
-                                        >
-                                          {dayjs(
-                                            showtimes.ngayChieuGioChieu
-                                          ).format("DD-MM-YYYY ~ HH:MM")}
-                                        </button>
-                                      );
-                                    })}
-                                </div>
+                  {cinemaSystem.lstCumRap?.slice(0, 10).map((cinemaComplex, idx) => {
+                    return (
+                      <Panel
+                        header={
+                          <div className="cinema_info_mobile">
+                            <h3 className="cinema_name_mobile">{cinemaComplex.tenCumRap}</h3>
+                            <p className="cinema_address_mobile">{cinemaComplex.diaChi}</p>
+                            <span className="cinema_detail_mobile">[chi tiết]</span>
+                          </div>
+                        }
+                        key={idx + 1}
+                      >
+                        {cinemaComplex.danhSachPhim.map((film, filmIndex) => {
+                          return (
+                            <div key={filmIndex} className="d-flex align-items-center mb-3">
+                              <div>
+                                <img width={60} height={80} src={film.hinhAnh} alt={film.maPhim} />
                               </div>
-                            );
-                          })}
-                        </Panel>
-                      );
-                    })}
+                              <div className="ms-3">
+                                <p className="name_film_mobile">{film.tenPhim}</p>
+                                {film.lstLichChieuTheoPhim
+                                  ?.slice(0, 4)
+                                  .map((showtimes, showtimesIndex) => {
+                                    return (
+                                      <button
+                                        key={showtimesIndex}
+                                        className="cinema_date_mobile"
+                                        onClick={() => handleBooking(showtimes.maLichChieu)}
+                                      >
+                                        {dayjs(showtimes.ngayChieuGioChieu).format(
+                                          "DD-MM-YYYY ~ HH:MM"
+                                        )}
+                                      </button>
+                                    );
+                                  })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </Panel>
+                    );
+                  })}
                 </Collapse>
               </Panel>
             );

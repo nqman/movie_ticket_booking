@@ -35,32 +35,7 @@ export async function getMovieDetails(movieId) {
   }
 }
 
-export async function getTickets(showtimeId) {
-  try {
-    const response = await baseAPI.get("/QuanLyDatVe/LayDanhSachPhongVe", {
-      params: {
-        maLichChieu: showtimeId,
-      },
-    });
 
-    return response.data.content;
-  } catch (error) {
-    throw error.response.data.content;
-  }
-}
-
-export async function bookingTickets(showtimeId, danhSachVe) {
-  try {
-    const response = await baseAPI.post("/QuanLyDatVe/DatVe", {
-      maLichChieu: showtimeId,
-      danhSachVe: danhSachVe,
-    });
-
-    return response.data.content;
-  } catch (error) {
-    throw error.response.data.content;
-  }
-}
 
 export async function getCinemaTheater(cinemaId) {
   try {
@@ -91,14 +66,7 @@ export async function getCinemaShowTimes(cinemaId) {
   }
 }
 
-export async function createShowTime(movie) {
-  try {
-    const response = await baseAPI.post("/QuanLyDatVe/TaoLichChieu", movie);
-    return response.data.content;
-  } catch (error) {
-    throw error.response.data.content;
-  }
-}
+
 
 export async function getDetailCinemasAPI() {
   try {

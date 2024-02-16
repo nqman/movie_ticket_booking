@@ -1,0 +1,78 @@
+.admin-layout {
+  position: relative;
+  .logo-admin {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    text-align: center;
+
+    .logo-movie {
+      color: red;
+      font-style: italic;
+      line-height: 32px;
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+
+  .logout-admin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .ant-layout-sider-has-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+  }
+
+  .ant-layout-content {
+    margin-left: 200px !important;
+  }
+
+  .ant-input-group-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .ant-input-search
+    > .ant-input-group
+    > .ant-input-group-addon:last-child
+    .ant-input-search-button {
+    background: #001529;
+    border-color: #001529;
+  }
+
+  .site-layout .site-layout-background {
+    background: #fff;
+
+    .logout-admin {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #001529;
+      padding-right: 20px;
+
+      .name {
+        margin: 0 10px 0;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .logout {
+        background: transparent;
+        border: none;
+        color: orange;
+        font-size: 12px;
+        opacity: 1;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

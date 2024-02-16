@@ -1,0 +1,29 @@
+.movie-list {
+  .movie-list-btn {
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background: transparent;
+    margin-right: 5px;
+  }
+
+  .edit {
+    color: rgb(10, 187, 187);
+  }
+
+  .delete {
+    color: red;
+  }
+
+  .calendar {
+    color: green;
+  }
+
+  .ant-table-cell:nth-child(4) {
+    width: 600px;
+  }
+  .ant-table-cell:nth-child(1),
+  .ant-table-cell:nth-child(5) {
+    width: 150px;
+  }
+}
